@@ -1,0 +1,386 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Master Thesis</title>
+    <meta name="description" content="Porównanie systemów rekomendacji">
+    <meta name="author" content="Michał Niegrzybowski">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="//code.jquery.com/jquery-1.8.0.js"></script>
+    <script src="//code.jquery.com/ui/1.8.23/jquery-ui.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/style.css" />
+    <link type="text/css" rel="stylesheet" href="fsharp.formatting/styles/deedle.css" />
+    <link type="text/css" rel="stylesheet" href="css/custom.css" />
+    <script src="fsharp.formatting/styles/tips.js" type="text/javascript"></script>
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <link rel="stylesheet" href="css/fsreveal.css">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+    <script language="javascript" type="text/javascript">
+        function init()
+        {
+            websocket = new WebSocket("ws://"+window.location.host+"/websocket");
+            websocket.onmessage = function(evt) { location.reload(); };
+        }
+        window.addEventListener("load", init, false);
+    </script>
+</head>
+<body>
+    <div class="reveal">
+        
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section >
+<h2>Porównanie systemów rekomendacji</h2>
+<p>Promotor: dr Krzysztof Manuszewski</p>
+<p>Michał Niegrzybowski - <a href="">143303</a></p>
+<img src="images/pg_logo_kolor.jpg" width=400 />
+</section>
+<section >
+<h3>Agenda</h3>
+<ul>
+<li>cel pracy</li>
+<li>zagadnienia dotyczące systemów rekomendacji</li>
+<li>sposoby na gromadzenie danych</li>
+<li>użyte technologie</li>
+<li>sposoby na poprawienie rekomendacji</li>
+<li>sprawdzenie poprawności działania systemów rekomendacji</li>
+<li>analiza porównawcza systemów rekomendacji</li>
+<li>podsumowanie</li>
+</ul>
+</section>
+<section >
+<h3>Cel pracy</h3>
+<ul>
+<li>
+porównanie systemów rekomendacji
+<ul>
+<li>Azure Recommendation API</li>
+<li>Mahout</li>
+<li>NRecoRecommender</li>
+</ul>
+</li>
+<li>rozwiązania komercyjne</li>
+<li>sposoby zbierania informacji</li>
+<li>ewaluacje</li>
+<li>sposoby na poprawę jakości rekomendacji</li>
+</ul>
+</section>
+<section >
+<section >
+<h3>Zagadnienia dotyczące systemów rekomendacji</h3>
+</section>
+<section >
+<h3>Ogólne problemy i ich rozwiązania</h3>
+<ul>
+<li>zbieranie danych</li>
+<li>
+ustalanie podobieństwa
+<ul>
+<li>użytkowników</li>
+<li>przedmiotów</li>
+</ul>
+</li>
+<li>co w przypadku braku danych?</li>
+<li>optymalizacja</li>
+<li>estymacja</li>
+</ul>
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>Spotify</li>
+</ul>
+<br/>
+<img src="images/spotify.png" width=800 />
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>Allegro</li>
+</ul>
+<br/>
+<img src="images/allegro.png" width=1200 />
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>Helion</li>
+</ul>
+<br/>
+<img src="images/helion.png" width=1200 />
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>IHS Markit</li>
+</ul>
+<br/>
+<img src="images/ihsmarkit.png" width=600 />
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>Google</li>
+</ul>
+<br/>
+<img src="images/google.png" width=800 />
+</section>
+<section >
+<h3>Zastosowanie</h3>
+<ul>
+<li>Booking</li>
+</ul>
+<br/>
+<img src="images/booking.png" width=600 />
+</section>
+</section>
+<section >
+<section >
+<h3>Sposoby na gromadzenie danych</h3>
+</section>
+<section >
+<h3>Usage</h3>
+<ul>
+<li>interakcja użytkownika z witryną</li>
+<li>kliknięcia</li>
+<li>pobrania elementów</li>
+<li>ocena oglądanego produktu</li>
+<li>komentarze</li>
+</ul>
+</section>
+<section >
+<h3>DwellTime</h3>
+<ul>
+<li>technika opisana przez inżynierów z firmy Yahoo</li>
+<li>opiera się na gromadzeniu danych związanych z zaangażowaniem klienta</li>
+<li>
+mierzony jest między innymi:
+<ul>
+<li>czas oglądania dokumentu</li>
+<li>długość dokumentu</li>
+<li>typ urządzenia</li>
+</ul>
+</li>
+<li>dzięki zebranym danym istnieje możliwość przeprowadzenia analizy danych</li>
+<li>analiza pozwala na zawarcie danych odnośnie DwellTime'u przy generowaniu rekomendacji</li>
+</ul>
+</section>
+<section >
+<h3>Inne podejścia</h3>
+<ul>
+<li>mapy cieplne</li>
+<li>zbieranie danych z sensorów urządzeń elektronicznych</li>
+<li>dane lokalizacyjne</li>
+<li>autoryzacja poprzez wspólnego poświadczyciela uprawnień</li>
+<li>śledzenie ruchów myszki</li>
+<li>śledzenie ruchów gałki ocznej</li>
+</ul>
+</section>
+</section>
+<section >
+<section >
+<h3>Metody tworzenia systemów rekomendacji</h3>
+</section>
+<section >
+<h3>Collaborative-Filtering</h3>
+<ul>
+<li>automatyczna predykcja (filtering)</li>
+<li>informacje od klientów (collaborating)</li>
+</ul>
+<br/>
+<img src="images/collaborative.png" width=800 />
+</section>
+<section >
+<h3>Azure Recommendation API</h3>
+<ul>
+<li>moduł na platformie Azure</li>
+<li>przykładowa aplikacja firmy Microsoft napisana w języku C#</li>
+<li>
+3 w 1
+<ul>
+<li>user-based</li>
+<li>item-based</li>
+<li>najcześciej kupowane</li>
+</ul>
+</li>
+<li>abonament na usługę</li>
+</ul>
+</section>
+<section >
+<h3>Apache Mahout</h3>
+<ul>
+<li>rozwiązanie firmy Apache</li>
+<li>szeroki zakres modyfikacji</li>
+<li>możliwość pisania w Scali lub Javie</li>
+<li>
+możliwość tworzenia w oparciu o
+<ul>
+<li>pamięć rozproszoną (Spark, H2O)</li>
+<li>in-memory</li>
+</ul>
+</li>
+</ul>
+</section>
+<section >
+<h3>NRecoRecommender</h3>
+<ul>
+<li>rozwiązanie firmy NReco</li>
+<li>port biblioteki Mahout</li>
+<li>możliwość pisania w F# lub C#</li>
+<li>szeroki zakres modyfikacji</li>
+<li>niektóre funkcje biblioteki Mahout, nie zostały przepisane</li>
+</ul>
+</section>
+</section>
+<section >
+<section >
+<h3>Sposoby na poprawienie rekomendacji</h3>
+</section>
+<section >
+<h3>Filtrowanie i Kategoryzacja</h3>
+<ul>
+<li>ograniczenie modelu do aktualnego kontekstu dla filtrowania</li>
+<li>pracowanie na pełnym modelu przy kategoryzacji</li>
+<li>uwydatnianie przedmiotów pasujących do kontekstu</li>
+<li>polecanie przedmiotów do których użytkownik posiada uprawnienia</li>
+<li>polecanie przedmiotów do których użytkownik <strong>nie</strong> posiada uprawnień</li>
+<li>filtrowanie poza systemem rekomendacji</li>
+</ul>
+</section>
+<section >
+<h3>Rescoring</h3>
+<ul>
+<li>poleganie na cechach zebranych danych</li>
+<li>wypracowanie charakterystyk danych</li>
+<li>uwzględnienie w/w charakterystyk przy obliczaniu oceny rekomendacji</li>
+<li>proces rescoringu działa na samym końcu tuż przed zwróceniem poleceń</li>
+</ul>
+</section>
+</section>
+<section >
+<section >
+<h3>Sprawdzenie poprawności działania systemów rekomendacji</h3>
+</section>
+<section >
+<h3>Ewaluacje</h3>
+<ul>
+<li>klasteryzacja zbioru</li>
+<li>automatyzacja przeprowadzanych testów</li>
+<li>analiza otrzymanych wyników</li>
+<li>trafność ewaluacji a prawdziwa skuteczność</li>
+</ul>
+</section>
+<section >
+<h3>Ankiety</h3>
+<ul>
+<li>manualne</li>
+<li>ograniczone do wybranej grupy użytkowników/analityków</li>
+<li>najbardziej precyzyjne</li>
+<li>ocena A od osoby 1 nie jest równa ocenie A od osoby B</li>
+</ul>
+</section>
+<section >
+<h3>Badanie sentymentu</h3>
+<ul>
+<li>analiza komentarzy nie jest trywialna</li>
+<li>wykorzystanie Azure Cognitive Services bądź pochodnych narzędzi</li>
+<li>pozwala na automatyczne zbadanie sentymentu wypowiedzi</li>
+<li>podejście takie umożliwia pełną automatyzację jednocześnie zapewniając największą trafność testowania systemu rekomendacji</li>
+</ul>
+</section>
+</section>
+<section >
+<h3>Analiza porównawcza systemów rekomendacji</h3>
+<ul>
+<li>brak możliwości modyfikacji przebiegu generowania rekomendacji w przypadku Azure Recommendation API</li>
+<li>stałe czasy generowania rekomendacji, bez względu na liczbę polecanych przedmiotów (Mahout, NRecoRecommender)</li>
+<li>wzrost liniowy czasu generowania rekomendacji przy zwiększaniu limitu użytkowników (Azure Recommendation API)</li>
+<li>każde z rozwiązań próbuje cache'ować wcześniej wykonane zapytania w celu ich późniejszej szybszej generacji</li>
+<li>bardzo zawodny proces ładowania danych w przypadku Azure Recommendation API</li>
+</ul>
+</section>
+<section >
+<h3>Zebrane doświadczenie</h3>
+<ul>
+<li>rozpoczęcie prowadzenia własnej strony internetowej</li>
+<li>rozpoczęcie kontrybucji do projektów open source</li>
+<li>utrwalenie i podniesienie umiejętności związanych z programowaniem funkcyjnym, głównie w języku F#.</li>
+<li>odniesienia do napisanych artykułów w licznych zestawieniach ciekawych artykułów, dokumentacji Microsoftu</li>
+<li>liczne oferty pracy i współpracy</li>
+</ul>
+</section>
+<section >
+<h3>Podsumowanie</h3>
+<ul>
+<li>Mahout okazał się rozwiązaniem najbardziej dojrzałym</li>
+<li>praca z NRecoRecommender z uwagi na użycie języka F# najprzyjemniejsza</li>
+<li>Azure Recommendation API okazał się najbardziej optymalny dla domen gdzie nie ma skompliowanej logiki związanej z generowaniem rekomendacji</li>
+<li>najszybszym systemem był Mahout</li>
+<li>najmniej problemów związanych ze znalezieniem potencjalnych pracowników, powinny mieć firmy, które zdecydują się na bibliotekę Mahout</li>
+<li>każdy ze sposobów zbierania danych jest związany z domeną</li>
+<li>po ustaleniu pewnych początkowych założeń, każdy sposób można dopasować stricto do domeny</li>
+<li>obrazuje to DwellTime użyty w przypadku firmy Yahoo i IHS Markit</li>
+</ul>
+</section>
+<section >
+<h3>Dziękuję za uwagę</h3>
+</section>
+
+
+        </div>
+    </div>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+    <script>
+        // Add the nohighlight class and data-noescape attribute to code elements that have already been formatted by FSharp.Formatting
+        $('pre.highlighted code').addClass('nohighlight').attr('data-noescape', '');
+
+        // Full list of configuration options available here:
+        // https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+            // Parallax scrolling
+            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+            // parallaxBackgroundSize: '2100px 900px',
+
+            // Optional libraries used to extend on reveal.js
+            dependencies: [
+                { src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: 'plugin/zoom-js/zoom.js', async: true, condition: function () { return !!document.body.classList; } },
+                { src: 'plugin/notes/notes.js', async: true, condition: function () { return !!document.body.classList; } }
+            ]
+        });
+
+    </script>
+</body>
+</html>
+
