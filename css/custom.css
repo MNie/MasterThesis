@@ -2,3 +2,7 @@ img {
     box-shadow: none !important;
     border: none !important;
 }
+
+li {
+    font-size: 30px !important;
+}
