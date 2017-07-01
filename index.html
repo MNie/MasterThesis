@@ -52,7 +52,7 @@
             <section >
 <h2>Porównanie systemów rekomendacji</h2>
 <p>Promotor: dr Krzysztof Manuszewski</p>
-<p>Michał Niegrzybowski - <a href="">143303</a></p>
+<p>Autor: Michał Niegrzybowski - <a href="">143303</a></p>
 <img src="images/pg_logo_kolor.jpg" width=400 />
 </section>
 <section >
@@ -60,11 +60,13 @@
 <ul>
 <li>cel pracy</li>
 <li>zagadnienia dotyczące systemów rekomendacji</li>
-<li>sposoby na gromadzenie danych</li>
+<li>przykłady zastosowań systemów rekomendacji</li>
+<li>metody gromadzenia danych</li>
 <li>użyte technologie</li>
-<li>sposoby na poprawienie rekomendacji</li>
-<li>sprawdzenie poprawności działania systemów rekomendacji</li>
-<li>analiza porównawcza systemów rekomendacji</li>
+<li>analiza porównawcza</li>
+<li>wnioski dotyczące poprawności działania systemów rekomendacji</li>
+<li>sposoby poprawy skuteczności rekomendacji</li>
+<li>zebrane doświadczenie</li>
 <li>podsumowanie</li>
 </ul>
 </section>
@@ -79,10 +81,10 @@ porównanie systemów rekomendacji
 <li>NRecoRecommender</li>
 </ul>
 </li>
-<li>rozwiązania komercyjne</li>
+<li>analiza rozwiązań komercyjnych</li>
 <li>sposoby zbierania informacji</li>
-<li>ewaluacje</li>
-<li>sposoby na poprawę jakości rekomendacji</li>
+<li>ewaluacje systemów</li>
+<li>sposoby poprawy jakości rekomendacji</li>
 </ul>
 </section>
 <section >
@@ -90,7 +92,7 @@ porównanie systemów rekomendacji
 <h3>Zagadnienia dotyczące systemów rekomendacji</h3>
 </section>
 <section >
-<h3>Ogólne problemy i ich rozwiązania</h3>
+<h3>Ogólne problemy związane z budową systemów rekomendacji i ich rozwiązania</h3>
 <ul>
 <li>zbieranie danych</li>
 <li>
@@ -100,89 +102,71 @@ ustalanie podobieństwa
 <li>przedmiotów</li>
 </ul>
 </li>
-<li>co w przypadku braku danych?</li>
+<li>analiza przypadku braku danych</li>
 <li>optymalizacja</li>
-<li>estymacja</li>
+<li>ewaluacja</li>
 </ul>
 </section>
+</section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>Spotify</li>
-</ul>
-<br/>
+<section >
+<h3>Przykłady zastosowań systemów rekomendacji</h3>
+</section>
+<section >
+<h3>Spotify</h3>
 <img src="images/spotify.png" width=800 />
 </section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>Allegro</li>
-</ul>
-<br/>
+<h3>Allegro</h3>
 <img src="images/allegro.png" width=1200 />
 </section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>Helion</li>
-</ul>
-<br/>
+<h3>Helion</h3>
 <img src="images/helion.png" width=1200 />
 </section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>IHS Markit</li>
-</ul>
-<br/>
+<h3>IHS Markit</h3>
 <img src="images/ihsmarkit.png" width=500 />
 </section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>Google</li>
-</ul>
-<br/>
+<h3>Google</h3>
 <img src="images/google.png" width=800 />
 </section>
 <section >
-<h3>Zastosowanie</h3>
-<ul>
-<li>Booking</li>
-</ul>
-<br/>
+<h3>Booking</h3>
 <img src="images/booking.png" width=500 />
 </section>
 </section>
 <section >
 <section >
-<h3>Sposoby na gromadzenie danych</h3>
+<h3>Metody gromadzenia danych</h3>
 </section>
 <section >
 <h3>Usage</h3>
 <ul>
-<li>interakcja użytkownika z witryną</li>
+<li>
+interakcja użytkownika z witryną
+<ul>
 <li>kliknięcia</li>
 <li>pobrania elementów</li>
 <li>ocena oglądanego produktu</li>
 <li>komentarze</li>
 </ul>
+</li>
+</ul>
 </section>
 <section >
 <h3>DwellTime</h3>
 <ul>
-<li>technika opisana przez inżynierów z firmy Yahoo</li>
-<li>opiera się na gromadzeniu danych związanych z zaangażowaniem klienta</li>
+<li>podejście opisane przez inżynierów z firmy Yahoo</li>
 <li>
-mierzony jest między innymi:
+opiera się na gromadzeniu danych związanych z zaangażowaniem klienta poprzez:
 <ul>
 <li>czas oglądania dokumentu</li>
 <li>długość dokumentu</li>
 <li>typ urządzenia</li>
 </ul>
 </li>
-<li>dzięki zebranym danym istnieje możliwość przeprowadzenia analizy danych</li>
-<li>analiza pozwala na zawarcie danych odnośnie DwellTime'u przy generowaniu rekomendacji</li>
 </ul>
 </section>
 <section >
@@ -199,7 +183,7 @@ mierzony jest między innymi:
 </section>
 <section >
 <section >
-<h3>Metody tworzenia systemów rekomendacji</h3>
+<h3>Użyte technologie</h3>
 </section>
 <section >
 <h3>Collaborative-Filtering</h3>
@@ -213,8 +197,8 @@ mierzony jest między innymi:
 <section >
 <h3>Azure Recommendation API</h3>
 <ul>
-<li>moduł na platformie Azure</li>
-<li>przykładowa aplikacja firmy Microsoft napisana w języku C#</li>
+<li>moduł platformy Azure</li>
+<li>przykładowa aplikacja firmy Microsoft napisana jest w języku C#</li>
 <li>
 3 w 1
 <ul>
@@ -248,38 +232,23 @@ możliwość tworzenia w oparciu o
 <li>port biblioteki Mahout</li>
 <li>możliwość pisania w F# lub C#</li>
 <li>szeroki zakres modyfikacji</li>
-<li>niektóre funkcje biblioteki Mahout, nie zostały przepisane</li>
+<li>niektóre funkcje biblioteki Mahout nie zostały przepisane</li>
 </ul>
 </section>
 </section>
 <section >
-<section >
-<h3>Sposoby na poprawienie rekomendacji</h3>
-</section>
-<section >
-<h3>Filtrowanie i Kategoryzacja</h3>
+<h3>Analiza porównawcza</h3>
 <ul>
-<li>ograniczenie modelu do aktualnego kontekstu dla filtrowania</li>
-<li>pracowanie na pełnym modelu przy kategoryzacji</li>
-<li>uwydatnianie przedmiotów pasujących do kontekstu</li>
-<li>polecanie przedmiotów do których użytkownik posiada uprawnienia</li>
-<li>polecanie przedmiotów do których użytkownik <strong>nie</strong> posiada uprawnień</li>
-<li>filtrowanie poza systemem rekomendacji</li>
+<li>brak możliwości modyfikacji przebiegu generowania rekomendacji w przypadku Azure Recommendation API</li>
+<li>stałe czasy generowania rekomendacji, bez względu na liczbę polecanych przedmiotów (Mahout, NRecoRecommender)</li>
+<li>wzrost liniowy czasu generowania rekomendacji przy zwiększaniu limitu użytkowników (Azure Recommendation API)</li>
+<li>każde z rozwiązań próbuje cache'ować wcześniej wykonane zapytania w celu ich późniejszej szybszej generacji</li>
+<li>bardzo zawodny proces ładowania danych w przypadku Azure Recommendation API</li>
 </ul>
 </section>
 <section >
-<h3>Rescoring</h3>
-<ul>
-<li>poleganie na cechach zebranych danych</li>
-<li>wypracowanie charakterystyk danych</li>
-<li>uwzględnienie w/w charakterystyk przy obliczaniu oceny rekomendacji</li>
-<li>proces rescoringu działa na samym końcu tuż przed zwróceniem poleceń</li>
-</ul>
-</section>
-</section>
 <section >
-<section >
-<h3>Sprawdzenie poprawności działania systemów rekomendacji</h3>
+<h3>Wnioski dotyczące poprawności działania systemów rekomendacji</h3>
 </section>
 <section >
 <h3>Ewaluacje</h3>
@@ -287,16 +256,16 @@ możliwość tworzenia w oparciu o
 <li>klasteryzacja zbioru</li>
 <li>automatyzacja przeprowadzanych testów</li>
 <li>analiza otrzymanych wyników</li>
-<li>trafność ewaluacji a prawdziwa skuteczność</li>
+<li>trafność ewaluacji, a prawdziwa skuteczność</li>
 </ul>
 </section>
 <section >
 <h3>Ankiety</h3>
 <ul>
 <li>manualne</li>
-<li>ograniczone do wybranej grupy użytkowników/analityków</li>
+<li>ograniczone dla wybranej grupy użytkowników/analityków</li>
 <li>najbardziej precyzyjne</li>
-<li>ocena A od osoby 1 nie jest równa ocenie A od osoby B</li>
+<li>ocena A od osoby 1 nie jest równa ocenie A od osoby 2</li>
 </ul>
 </section>
 <section >
@@ -310,22 +279,37 @@ możliwość tworzenia w oparciu o
 </section>
 </section>
 <section >
-<h3>Analiza porównawcza systemów rekomendacji</h3>
+<section >
+<h3>Sposoby poprawy skuteczności rekomendacji</h3>
+</section>
+<section >
+<h3>Filtrowanie i Kategoryzacja</h3>
 <ul>
-<li>brak możliwości modyfikacji przebiegu generowania rekomendacji w przypadku Azure Recommendation API</li>
-<li>stałe czasy generowania rekomendacji, bez względu na liczbę polecanych przedmiotów (Mahout, NRecoRecommender)</li>
-<li>wzrost liniowy czasu generowania rekomendacji przy zwiększaniu limitu użytkowników (Azure Recommendation API)</li>
-<li>każde z rozwiązań próbuje cache'ować wcześniej wykonane zapytania w celu ich późniejszej szybszej generacji</li>
-<li>bardzo zawodny proces ładowania danych w przypadku Azure Recommendation API</li>
+<li>ograniczenie modelu do aktualnego kontekstu dla filtrowania</li>
+<li>pracowanie na pełnym modelu przy kategoryzacji</li>
+<li>uwydatnianie przedmiotów pasujących do kontekstu</li>
+<li>polecanie przedmiotów, do których użytkownik posiada uprawnienia</li>
+<li>polecanie przedmiotów, do których użytkownik <strong>nie</strong> posiada uprawnień</li>
+<li>filtrowanie poza systemem rekomendacji</li>
 </ul>
+</section>
+<section >
+<h3>Rescoring</h3>
+<ul>
+<li>poleganie na cechach zebranych danych</li>
+<li>wypracowanie charakterystyk danych</li>
+<li>uwzględnienie charakterystyk przy obliczaniu oceny rekomendacji</li>
+<li>proces rescoringu działa na samym końcu tuż przed zwróceniem poleceń</li>
+</ul>
+</section>
 </section>
 <section >
 <h3>Zebrane doświadczenie</h3>
 <ul>
-<li>rozpoczęcie prowadzenia własnej strony internetowej</li>
-<li>rozpoczęcie kontrybucji do projektów open source</li>
-<li>utrwalenie i podniesienie umiejętności związanych z programowaniem funkcyjnym, głównie w języku F#.</li>
-<li>odniesienia do napisanych artykułów w licznych zestawieniach ciekawych artykułów, dokumentacji Microsoftu</li>
+<li>prowadzenia własnej strony internetowej</li>
+<li>kontrybucja w projektach open source</li>
+<li>podniesienie umiejętności związanych z programowaniem funkcyjnym, głównie w języku F#</li>
+<li>odnotowanie napisanych artykułów w licznych zestawieniach ciekawych artykułów i dokumentacji Microsoftu</li>
 <li>liczne oferty pracy i współpracy</li>
 </ul>
 </section>
@@ -333,13 +317,12 @@ możliwość tworzenia w oparciu o
 <h3>Podsumowanie</h3>
 <ul>
 <li>Mahout okazał się rozwiązaniem najbardziej dojrzałym</li>
-<li>praca z NRecoRecommender z uwagi na użycie języka F# najprzyjemniejsza</li>
+<li>praca z NRecoRecommender z uwagi na użycie języka F# była najprzyjemniejsza</li>
 <li>Azure Recommendation API okazał się najbardziej optymalny dla domen gdzie nie ma skompliowanej logiki związanej z generowaniem rekomendacji</li>
 <li>najszybszym systemem był Mahout</li>
 <li>najmniej problemów związanych ze znalezieniem potencjalnych pracowników, powinny mieć firmy, które zdecydują się na bibliotekę Mahout</li>
 <li>każdy ze sposobów zbierania danych jest związany z domeną</li>
-<li>po ustaleniu pewnych początkowych założeń, każdy sposób można dopasować stricto do domeny</li>
-<li>obrazuje to DwellTime użyty w przypadku firmy Yahoo i IHS Markit</li>
+<li>po ustaleniu pewnych początkowych założeń, każdą metodę można dopasować stricto do domeny, np. DwellTime użyty w przypadku firmy Yahoo i IHS Markit</li>
 </ul>
 </section>
 <section >
