@@ -6,3 +6,11 @@ img {
 li {
     font-size: 30px !important;
 }
+
+div .left {
+    float: left;
+}
+
+div .right {
+    float: right;
+}
